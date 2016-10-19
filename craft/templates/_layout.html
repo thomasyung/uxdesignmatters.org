@@ -1,0 +1,61 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	
+    <meta name="description" content="UX Design Matters">
+    <meta name="author" content="Thomas Yung">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cleartype" content="on">
+
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+
+	<link rel="home" href="{{ siteUrl }}">
+	<link rel="stylesheet" href="/assets/css/normalize.css">
+	<link rel="stylesheet" href="/assets/css/styles.css">
+
+	<link rel="alternate" type="application/rss+xml" title="UX Design Matters Feed" href="/feed.rss" />
+</head>
+
+<body>
+	<div id="container" class="container">
+		<header id="header" class="header">
+			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+			<nav class="navbar">
+				<ul class="nav">
+					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+					<li><a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a></li>
+					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="content" role="main">
+			{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</main>
+
+		<footer id="footer">
+			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
+		</footer>
+	</div>
+</body>
+</html>

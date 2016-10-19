@@ -1,0 +1,60 @@
+/* Colors */
+@import 'open-color.css';
+
+body {
+	 background-color: var(--oc-gray-0);
+	 color: var(--oc-gray-7);
+}
+a {
+    color: var(--oc-blue-7);
+}
+a:hover, a:focus, a:active {
+   color: var(--oc-indigo-7);
+}
+
+/* Reset Styles */
+* {
+  box-sizing: border-box; 
+}
+html {
+  font-family: georgia, serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%; 
+}
+img {
+  width: 100%; 
+}
+
+/* Semantic Styles */
+header {
+	padding: 0 1em;
+}
+main {
+  width: 80%;
+  margin: 2em auto; 
+}
+footer {
+  margin: 3em 0 3em 0;
+  padding: 0 1em;
+  clear: both; 
+}
+
+/* Custom Styles */
+.multicolumn {
+  -webkit-column-width: 300px;
+     -moz-column-width: 300px;
+          column-width: 300px;
+    -webkit-column-gap: 2em;
+       -moz-column-gap: 2em;
+            column-gap: 2em;
+   -webkit-column-rule: 0px solid #444;
+      -moz-column-rule: 0px solid #444;
+           column-rule: 0px solid #444; 
+         overflow-wrap: break-word;
+  			 word-wrap: break-word;
+}
+
