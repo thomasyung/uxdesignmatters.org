@@ -1,0 +1,56 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/custom_components/meetup-events/meetup-event.html">
+
+<dom-module id="meetup-events">
+  
+  <template>
+    
+    <style>
+      :host {
+        display: flex;
+        box-sizing: border-box;
+        overflow-x: scroll;
+      }
+    </style>
+    
+    <iron-ajax
+      auto
+      url="/custom_components/meetup-events/meetup-events-proxy.php/?group={{group}}"
+      handle-as="json"
+      last-response="{{response}}"></iron-ajax>
+      
+    <template is="dom-repeat" items="{{response}}">
+      <meetup-event 
+        link="{{item.link}}" 
+        name="{{item.name}}"
+        time="{{item.time}}"
+        venue="{{item.venue.name}}"></meetup-event>
+    </template>
+    
+  </template>
+  
+</dom-module>
+
+<script>
+  Polymer ({
+    is: 'meetup-events',
+    properties: {
+      group: {
+        value:'ux-design-matters-mn',
+        notify: true
+      }
+    }
+  })
+</script>
+
+<script src="/custom_components/meetup-events/jquery-2.2.1.min.js"></script>
+<script src="/custom_components/meetup-events/jquery.mousewheel.js"></script>
+<script>
+  // Handle mousewheel horizontal scrolling
+  $('meetup-events').on('mousewheel', function(event) {
+    var delta = Math.max(-1, Math.min(1, (event.originalEvent.wheelDelta || -event.originalEvent.detail)));
+    $(this).scrollLeft( $(this).scrollLeft() - ( delta * 40 ) );
+    event.preventDefault();
+  });
+</script>

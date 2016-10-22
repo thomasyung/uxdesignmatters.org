@@ -1,0 +1,76 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="meetup-event">
+  
+  <template>
+    
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+      .meetupevent {
+        padding: 1em;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ddd;
+        margin-right: 10px;
+      }
+      .meetupevent:hover {
+        background: #eee;
+      }
+      .meetupeventname {
+        font-size: 150%;
+        color: #ed1c40;
+      }
+      .meetupeventdate {
+        margin-top: 0.5em;
+        color: #aaa;
+        font-family: helvetica, arial, sans-serif;
+      }
+      .meetupeventvenue {
+        margin-top: 0.5em;
+        color: #222;
+      }
+    </style>
+    
+    <div class="meetupevent">
+      <a class="meetupeventname" href="{{link}}">{{name}}</a>
+      <div class="meetupeventdate">{{date}}</div>
+      <div class="meetupeventvenue">{{venue}}</div>
+    </div>
+    
+  </template>
+  
+</dom-module>
+
+<script>
+  Polymer ({
+    is: 'meetup-event',
+    properties: {
+      name: {
+        value: '',
+        notify: true
+      },
+      link: {
+        value: '',
+        notify: true
+      },
+      venue: {
+        value: '',
+        notify: true
+      },
+      time: {
+        value: '',
+        notify: true
+      },
+      date: {
+        computed: 'toHumanDate(time)'
+      }
+    },
+    toHumanDate: function(time){
+      return (new Date(time)).toLocaleString();
+    }
+  })
+</script>
