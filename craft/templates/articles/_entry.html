@@ -1,5 +1,5 @@
 {#
- # News entry template
+ # Articles entry template
  # -------------------
  #
  # This template gets loaded whenever a News entry’s URL is
@@ -15,17 +15,21 @@
 
 {% extends "_layout" %}
 
-{% block head %}
-<style>
-	/* Overrides */
-	.issue { display: none; }
-</style>
-{% endblock %}
-
 {% block content %}
+	<div class="issues-nav">
+		<ul>
+			{% for entry in craft.entries.section('articles').issueNumber(globals.currentIssue).limit(4).find() | reverse %}
+				<li><a href="{{ entry.url }}" {% if craft.request.url == entry.url %}class="active"{% endif %}>{{ entry.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="clearboth"></div>
+	
 	<article>
 		<h1>{{ entry.title }}</h1>
 		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+		<div class="multicolumn">
 		{{ entry.body }}
+		</div>
 	</article>
 {% endblock %}

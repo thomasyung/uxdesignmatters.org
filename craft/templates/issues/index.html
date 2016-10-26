@@ -1,9 +1,9 @@
 {#
- # News index template
+ # Issues index template
  # -------------------
  #
- # This template is loaded whenever http://uxdesignmatters.org/news is
- # requested, because it is located at news/index.html in your
+ # This template is loaded whenever http://uxdesignmatters.org/issues is
+ # requested, because it is located at issues/index.html in your
  # craft/templates/ folder.
  #
  # See this page for more details on how Craft routes requests:
@@ -21,18 +21,18 @@
 </style>
 {% endblock %}
 
-{% set title = "News" %}
-
 {% block content %}
-<h1>News</h1>
+<h1>Past Issues</h1>
 <div class="multicolumn">
-	{% for entry in craft.entries.section('news').find() %}
+	{% for entry in craft.entries.section('issues').find() %}
 	<div class="article">
-		<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+		<h3><a href="{{ entry.url }}">Issue Number {{ entry.issueNumber }}</a></h3>
 		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.shortDescription }}
-		<!--{{ entry.body.getPage(1) }}-->
-		<p><a href="{{ entry.url }}">Continue reading</a></p>
+		<ul>
+			{% for article in craft.entries.section('articles').issueNumber(entry.issueNumber).limit(4).find() | reverse %}
+				<li><a href="{{ article.url }}">{{ article.title }}</a></li>
+			{% endfor %}
+		</ul>
 	</div>
 	{% endfor %}
 </div>	

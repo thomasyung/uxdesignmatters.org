@@ -1,0 +1,41 @@
+
+{% extends "_layout" %}
+
+{% block head %}
+<style>
+	/* Overrides */
+	.issue { display: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+	<h1>Issue Number {{ entry.issueNumber }}</h1>
+	
+	<div class="issues-nav">
+		<ul>
+			{% for entry in craft.entries.section('articles').issueNumber(entry.issueNumber).limit(4).find() | reverse %}
+				<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="clearboth"></div>
+	
+	<div class="heroimage">
+		{% set image = entry.coverPageImage.first() %}
+		{% if image %}
+			{% set full = (image.width > 2000) ? 2000 : image.width %}
+			{% set half = round(full / 2) %}
+			{% set fourth = round(full / 4) %}
+			<img src="{{ image.url({ width: half }) }}" alt=""
+			   srcset="{{ image.url({ width: fourth }) }} {{ fourth }}w,
+			           {{ image.url({ width: half }) }} {{ half }}w,
+			           {{ image.url({ width: full }) }} {{ full }}w"
+			   sizes="(min-width: {{ half + 1 }}px) {{ full }}px,
+			          (min-width: {{ fourth + 1 }}px) {{ half }}px,
+			          100vw"
+			>
+		{% endif %}	
+	</div>
+	<p>Image Credits: {{ entry.imageCredits }}</p>
+	
+{% endblock %}

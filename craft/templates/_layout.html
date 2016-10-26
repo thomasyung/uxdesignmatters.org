@@ -29,34 +29,51 @@
 	<link rel="home" href="{{ siteUrl }}">
 	<link rel="stylesheet" href="/assets/css/normalize.css">
 	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 
-	<link rel="alternate" type="application/rss+xml" title="UX Design Matters Feed" href="/feed.rss" />
+	<link rel="alternate" type="application/rss+xml" title="UX Design Matters - Latest News" href="/feed.rss" />
+	<link rel="alternate" type="application/rss+xml" title="UX Design Matters - Latest Articles" href="/articles.rss" />
+
+	{% block head %}
+	{# additional head content goes here #}
+	{% endblock %}
 </head>
 
 <body>
-	<div id="container" class="container">
-		<header id="header" class="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-			<nav class="navbar">
-				<ul class="nav">
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-					<li><a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a></li>
-					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
-					<li><a href="{{ url('credits') }}" {% if craft.request.firstSegment == 'credits' %}class="active"{% endif %}>Credits</a></li>
-				</ul>
-			</nav>
+	<div class="container">
+		<header class="header">
+		
+		<nav class="navbar">
+			<ul class="nav">
+				<li><a href="{{ url('issues') }}" {% if craft.request.firstSegment == 'issues' %}class="active"{% endif %}>Past Issues</a></li>
+				<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+				<li><a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a></li>
+				<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
+			</ul>
+		</nav>
+		
+			<a href="{{ siteUrl }}" class="logo">
+				<img src="{{ siteUrl }}/images/UXDM_logo.jpg" alt="UX Design Matters" />
+			</a>
+			
+			<div class="issue">
+				<div class="issue-label">Issue No.</div>
+				<div class="issue-number">{{globals.currentIssue}}</div>
+			</div>
+			
 		</header>
-
-		<main id="content" role="main">
+		
+		<main id="content" role="main">		
 			{% block content %}
 				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
 				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
 			{% endblock %}
 		</main>
 
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
+		<footer class="footer">
+			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved 
 		</footer>
 	</div>
 </body>
+
 </html>
