@@ -1,0 +1,93 @@
+/*!
+ * UX Design Matters - Nav
+ * http://www.uxdesignmatters.org
+ *
+ */
+
+
+/*******************************
+            Main Nav
+*******************************/
+.navbar { 
+	background-color: @black; 
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	}
+
+.nav {
+	margin: 0 20px 0 0;
+	display: inherit;
+	overflow: scroll;
+	}
+
+.nav li { display: block; }
+
+.nav li a {
+	color: @white;
+	text-decoration: none;
+	padding: 10px;
+	display: block;
+	line-height: 50px;
+	height: 70px;
+	text-transform: uppercase;
+	}	
+
+.nav li a:hover {
+	background-color: @blue;
+	}
+
+.nav .active,
+.issues-nav .active {
+	pointer-events: none;
+	cursor: default;
+	}
+
+.nav .active { background: @blue; }
+
+.issues-nav .active {
+	color: @black;
+	background-color: lighten(@blue, 25%);
+	text-decoration: none;
+	}
+
+
+/*******************************
+            Issue Nav
+*******************************/
+.issues-nav {
+float: left;
+text-transform: uppercase;
+background-color: @white;
+min-height: 100px;
+padding: 0;
+margin: 0 0 20px 0;
+	ul {
+	padding: 0;
+	display: block;
+	min-height: 110px;
+	margin: 0;
+	li {
+		display: inline-block;
+		width: 23%;
+		margin: 15px 1%;
+		border: 1px solid #e1e1e1;
+		float: left;
+		a {
+			display: inline-block;
+			padding: 20px;
+			text-decoration: none;
+			color: @blue;
+				&:hover {
+					margin: -2px 0 0 0;
+					box-shadow: 3px 2px 8px #ccc;
+					transition: all 0.2s;
+					background-color: #eee;
+					color: @black;
+				}
+			}
+		}
+	}
+}
