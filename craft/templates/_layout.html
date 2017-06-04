@@ -27,10 +27,10 @@
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 
 	<link rel="home" href="{{ siteUrl }}">
+	
 	<link rel="stylesheet" href="/assets/css/main.css">
-	<!--<link rel="stylesheet" href="/assets/css/normalize.css">-->
-	<!--<link rel="stylesheet" href="/assets/css/styles.css">-->
-	<!--<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">-->
+	<link rel="stylesheet" href="/assets/css/nav.css">
+	
 	<link rel="alternate" type="application/rss+xml" title="UX Design Matters - Latest News" href="/feed.rss" />
 	<link rel="alternate" type="application/rss+xml" title="UX Design Matters - Latest Articles" href="/articles.rss" />
 
@@ -40,40 +40,47 @@
 </head>
 
 <body>
-	<div class="container">
-		<header class="header">
-		
-			<nav class="navbar">
-				<ul class="nav">
-					<li><a href="{{ url('issues') }}" {% if craft.request.firstSegment == 'issues' %}class="active"{% endif %}>Past Issues</a></li>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-					<li><a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a></li>
-					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a></li>
-				</ul>
-			</nav>
-		
-			<a href="{{ siteUrl }}" class="logo">
-				<img src="{{ siteUrl }}/images/UXDM_logo.jpg" alt="UX Design Matters" />
-			</a>
-			
-			<div class="issue">
-				<div class="issue-label">Issue No.</div>
-				<div class="issue-number">{{globals.currentIssue}}</div>
+	
+	<header class="header">
+	
+		<div class="nav-container">
+    		<div class="nav-outer">
+      			<div class="nav-inner">
+					<nav class="nav">
+						<a href="{{ url('issues') }}" {% if craft.request.firstSegment == 'issues' %}class="active"{% endif %}>Past Issues</a>
+						<a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a>
+						<a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a>
+						<a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a>
+					</nav>
+				</div>
+				<a href="#" class="scrollleft">&lt;</a>
+    			<a href="#" class="scrollright">&gt;</a>
 			</div>
-			
-		</header>
+		</div>
+	
+		<a href="{{ siteUrl }}" class="logo">
+			<img src="{{ siteUrl }}/images/UXDM_logo.jpg" alt="UX Design Matters" />
+		</a>
 		
-		<main id="content" role="main">		
-			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
-		</main>
+		<div class="issue">
+			<div class="issue-label">Issue No.</div>
+			<div class="issue-number">{{globals.currentIssue}}</div>
+		</div>
+		
+	</header>
+	
+	<main id="content" role="main">		
+		{% block content %}
+			<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+			<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+		{% endblock %}
+	</main>
 
-		<footer class="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved 
-		</footer>
-	</div>
+	<footer class="footer">
+		Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved 
+	</footer>
+
+	<script src="/assets/js/nav.js"></script>
 
 </body>
 

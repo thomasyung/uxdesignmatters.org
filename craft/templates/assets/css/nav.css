@@ -1,0 +1,95 @@
+.header {
+  margin: 50px 0;
+  height: 150px;
+}
+
+.main {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.3em;
+}
+
+.footer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* vars for customnav */
+:root {
+  --customnav-height: 50px;
+  --customnav-link-color: #e8f7ff;
+  --customnav-background-color: #111;
+  --customnav-highlight-color: #1c7cd6;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-outer, .nav {
+  width: 100%;
+  height: 50px;
+  height: var(--customnav-height);
+  background: #111;
+  background: var(--customnav-background-color);
+}
+
+.nav {
+  text-align: right;
+  float: left;
+  white-space: nowrap;
+} 
+
+.nav a {
+  display: inline-block;
+  line-height: 50px;
+  line-height: var(--customnav-height);
+  padding: 0 10px;
+  color: #e8f7ff;
+  color: var(--customnav-link-color);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background: #1c7cd6;
+  background: var(--customnav-highlight-color);
+}
+
+.nav-outer {
+ position: relative;
+ overflow: hidden;
+}
+ 
+.nav-inner {
+ position: absolute;
+ left: 30px;
+ right: 30px;
+ overflow-x: scroll;
+ overflow-y: hidden;
+}
+ 
+.nav-inner::-webkit-scrollbar {
+ display: none;
+}
+
+.scrollleft, .scrollright {
+  position: absolute;
+  line-height: 50px;
+  line-height: var(--customnav-height);
+  padding: 0 10px;
+  color: #e8f7ff;
+  color: var(--customnav-link-color);
+  text-decoration: none;
+}
+
+.scrollleft {
+  left: 0;
+}
+
+.scrollright {
+  right: 0;
+}
