@@ -15,6 +15,14 @@
 
 {% extends "_layout" %}
 
+{% block head %}
+<style>
+	/* Overrides */
+	.multicolumn { column-width: 500px; }
+	img { height: auto; }
+</style>
+{% endblock %}
+
 {% block currentissue %}
 	<div class="issue-number">{{entry.issueNumber}}</div>
 {% endblock %}
