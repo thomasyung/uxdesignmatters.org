@@ -28,6 +28,7 @@
 	<article>
 		<h1>{{ entry.title }}</h1>
 		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+		<p>By {{entry.contributor}}</p>
 		<div class="multicolumn">
 		{{ entry.body }}
 		</div>
