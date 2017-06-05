@@ -15,10 +15,14 @@
 
 {% extends "_layout" %}
 
+{% block currentissue %}
+	<div class="issue-number">{{entry.issueNumber}}</div>
+{% endblock %}
+
 {% block content %}
 	<div class="issues-nav">
 		<ul>
-			{% for entry in craft.entries.section('articles').issueNumber(globals.currentIssue).limit(4).find() | reverse %}
+			{% for entry in craft.entries.section('articles').issueNumber(entry.issueNumber).limit(4).find() | reverse %}
 				<li><a href="{{ entry.url }}" {% if craft.request.url == entry.url %}class="active"{% endif %}>{{ entry.title }}</a></li>
 			{% endfor %}
 		</ul>

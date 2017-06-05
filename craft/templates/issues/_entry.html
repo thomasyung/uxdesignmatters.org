@@ -1,15 +1,11 @@
 
 {% extends "_layout" %}
 
-{% block head %}
-<style>
-	/* Overrides */
-	.issue { display: none; }
-</style>
+{% block currentissue %}
+	<div class="issue-number">{{entry.issueNumber}}</div>
 {% endblock %}
 
 {% block content %}
-	<h1>Issue Number {{ entry.issueNumber }}</h1>
 	
 	<div class="issues-nav">
 		<ul>

@@ -47,7 +47,7 @@
     		<div class="nav-outer">
       			<div class="nav-inner">
 					<nav class="nav">
-						<a href="{{ url('issues') }}" {% if craft.request.firstSegment == 'issues' %}class="active"{% endif %}>Past Issues</a>
+						<a href="{{ url('issues') }}" {% if craft.request.firstSegment == 'issues' %}class="active"{% endif %}>Issues</a>
 						<a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a>
 						<a href="{{ url('resources') }}" {% if craft.request.firstSegment == 'resources' %}class="active"{% endif %}>Resources</a>
 						<a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>About</a>
@@ -64,7 +64,9 @@
 		
 		<div class="issue">
 			<div class="issue-label">Issue No.</div>
+			{% block currentissue %}
 			<div class="issue-number">{{globals.currentIssue}}</div>
+			{% endblock %}
 		</div>
 		
 	</header>
